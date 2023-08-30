@@ -88,4 +88,4 @@ paren s = "(" ++ s ++ ")"
 parenIfNeeded :: String -> String
 parenIfNeeded s = if all (`elem` safe) s then s else paren s
     where
-        safe = ['A'..'Z'] ++ ['a'..'z'] ++ "_'"
+        safe = ['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "_'"
