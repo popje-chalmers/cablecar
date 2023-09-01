@@ -59,6 +59,9 @@ plug cable end thing = do
     when (any (\pl -> pl_cable pl == cable && pl_end pl == end) $ p_plugs p) $ error $ "Cable " ++ show (c_name $ p_cables p !! uncableref cable) ++ " is already connected at end " ++ show end
     put $ p { p_plugs = p_plugs p ++ [Plug cable end thing] }
 
+plugs :: [CableRef] -> PlugEnd -> ThingRef -> CableCar ()
+plugs cables end thing = forM_ cables $ \c -> plug c end thing
+
 from :: PlugEnd
 from = FromEnd
 
